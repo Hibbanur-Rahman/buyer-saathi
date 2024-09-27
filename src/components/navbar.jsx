@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { FiSearch } from "react-icons/fi";
 import {
@@ -7,13 +7,35 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
+
 const Navbar = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 110) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="w-full flex shadow-md py-4 justify-center items-center">
+    <div
+      className={`w-full flex shadow-md py-4 justify-center items-center transition-all duration-300 ${
+        isSticky ? "fixed top-0 left-0 bg-white z-50" : ""
+      }`}
+    >
       <div className="w-10/12 flex items-center justify-between">
         <div className="flex items-center gap-[10px]">
           <LuMenu
@@ -40,7 +62,7 @@ const Navbar = () => {
             Login
           </button>
         </div>
-      </div>{" "}
+      </div>
       <Drawer open={open} onClose={closeDrawer} className="p-4">
         <div className="mb-6 flex items-center justify-between">
           <Typography variant="h5" color="blue-gray">

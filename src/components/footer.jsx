@@ -48,8 +48,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-6/12">
-          <div className="w-4/12">
+        <div className="flex w-6/12 justify-between">
+          <div className="w-3/12">
             <p className="font-medium mb-3 text-[#1C1C1C]">Company</p>
             <p
               className="text-[#8B96A5] cursor-pointer hover:text-[#1c1c1c]"
@@ -70,7 +70,7 @@ const Footer = () => {
               Our Vision
             </p>
           </div>
-          <div className="w-4/12">
+          <div className="w-3/12">
             <p className="font-medium mb-3 text-[#1C1C1C]">Policies</p>
             <p
               className="text-[#8B96A5] cursor-pointer hover:text-[#1c1c1c]"
@@ -112,7 +112,7 @@ const Footer = () => {
               Query
             </p>
           </div>
-          <div className="w-1/12">
+          <div className="w-3/12">
             <p className="font-medium mb-3 text-[#1C1C1C]">Resources</p>
             <p
               className="text-[#8B96A5] cursor-pointer hover:text-[#1c1c1c]"

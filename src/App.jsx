@@ -8,11 +8,13 @@ function App() {
 
   return (
     <div className="w-full flex flex-col">
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-      </Routes>
-      <Footer/>
+      <Navbar />
+      <div className="w-full flex justify-center">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }
