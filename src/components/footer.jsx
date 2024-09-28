@@ -9,7 +9,20 @@ import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full flex flex-col items-center bg-white">
+    <div className="w-full flex flex-col items-center bg-white mt-8">
+      <div className="w-full py-10 flex flex-col items-center justify-center bg-[#F5F5F5]">
+        <p className="text-[#1C1C1C] text-2xl font-semibold text-center">
+          Subscribe on our newsletter
+        </p>
+        <p className="text-sm text-[#606060] font-regular text-center">
+          Get daily news on upcoming offers from many suppliers all over the
+          world
+        </p>
+        <div className="flex gap-[20px] my-4">
+          <input type="text" className=" bg-white border rounded-lg p-2 px-4 w-[300px] focus:outline-none shadow-sm" placeholder="Email or Phone Number" />
+          <button className="bg-primary text-white px-4 rounded-lg shadow-sm">Subscribe</button>
+        </div>
+      </div>
       <div className="w-10/12 flex justify-between gap-[20px] my-6">
         <div className="flex w-5/12">
           <div className="w-4/12">

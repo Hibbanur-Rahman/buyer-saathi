@@ -16,6 +16,11 @@ import productItemImg7 from "../assets/images/product-img-7.png";
 import itemListingImg1 from "../assets/images/home-item-listing-1.jpg";
 import itemImg1 from "../assets/images/item-img-1.png";
 import amazonLogo from "../assets/images/amazon-logo.svg";
+import mobileAppGroupImg from "../assets/images/mobile-app-group.png";
+import appStoreLogo from "../assets/images/app-store-logo.svg";
+import playStoreLogo from "../assets/images/play-store-logo.svg";
+import websiteTourImg from "../assets/images/website-tour-img.png";
+import { FaPlay } from "react-icons/fa";
 
 import ProductItem from "../components/productItem";
 import ProductItemCard from "../components/productItemCard";
@@ -67,7 +72,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/**======== products listing=========== */}
+      {/**======== products listing =========== */}
       <div className="w-full flex flex-col my-8">
         <div className="w-full flex justify-between">
           <p className="text-xl font-medium text-primary">Products</p>
@@ -114,7 +119,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/**========  listing=========== */}
+      {/**========  listing =========== */}
       <div
         className="w-full flex gap-[20px] overflow-x-scroll border-y-[1px] py-8"
         style={{ scrollbarWidth: "none" }}
@@ -181,7 +186,7 @@ const Home = () => {
           cashbackPercent="12"
         />
       </div>
-      {/**========  listing=========== */}
+      {/**========  listing =========== */}
       <div
         className="w-full flex gap-[20px] overflow-x-scroll border-y-[1px] py-8"
         style={{ scrollbarWidth: "none" }}
@@ -247,6 +252,120 @@ const Home = () => {
           companyLogo={amazonLogo}
           cashbackPercent="12"
         />
+      </div>
+
+      {/**============ mobile app group banner ============== */}
+      <p className="text-center text-2xl font-medium my-4">
+        Download <span className="text-primary">BuyerSathi</span> App
+      </p>
+      <div className="w-full flex pt-4  justify-center bg-[#E8E8E8] rounded-xl">
+        <div className="w-8/12 flex justify-between">
+          <div className="flex justify-center items-end">
+            <img
+              src={mobileAppGroupImg}
+              alt=""
+              className="h-[200px] w-[230px] "
+            />
+          </div>
+          <div className="w-6/12 py-5">
+            <p className="text-base">
+              Get the best products picked by experts at the best price with
+              exciting offers from Flipkart, Amazon, Paytm and lots more.
+            </p>
+            <p className="text-base mt-8 ">Download App From</p>
+            <div className="flex gap-[20px] mt-4 mb-8">
+              <button className="bg-[#000000] rounded-lg px-2 py-1">
+                <img src={appStoreLogo} alt="" className="w-[120px] h-[50px]" />
+              </button>
+              <button className="bg-[#000000] rounded-lg px-2 py-1">
+                <img
+                  src={playStoreLogo}
+                  alt=""
+                  className="w-[120px] h-[50px]"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/**============ complete guide row ============== */}
+      <p className="font-medium text-center my-8 text-2xl">
+        A complete Guide to use <span className="text-primary">BuyerSathi</span>
+      </p>
+      <div className="w-full flex justify-between gap-[30px] ">
+        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+          <div className="relative w-full flex items-center justify-center">
+            <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
+            <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
+              <FaPlay className="text-white text-lg shadow-xl group-hover:text-primary" />
+            </div>
+          </div>
+
+          <p className="text-center my-3 text-base">Title 1</p>
+          <div className="flex w-full items-baseline gap-[3px] px-3 my-4">
+            <p className="text-base text-[#1C1C1C]">Description</p>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+          </div>
+          <div className="flex px-3 flex-col w-full">
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-4/12 mt-5"></div>
+          </div>
+        </div>
+        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+          <div className="relative w-full flex items-center justify-center">
+            <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
+            <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
+              <FaPlay className="text-white text-lg shadow-xl group-hover:text-primary" />
+            </div>
+          </div>
+
+          <p className="text-center my-3 text-base">Title 1</p>
+          <div className="flex w-full items-baseline gap-[3px] px-3 my-4">
+            <p className="text-base text-[#1C1C1C]">Description</p>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+          </div>
+          <div className="flex px-3 flex-col w-full">
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-4/12 mt-5"></div>
+          </div>
+        </div>
+        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+          <div className="relative w-full flex items-center justify-center">
+            <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
+            <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
+              <FaPlay className="text-white text-lg shadow-xl group-hover:text-primary" />
+            </div>
+          </div>
+
+          <p className="text-center my-3 text-base">Title 1</p>
+          <div className="flex w-full items-baseline gap-[3px] px-3 my-4">
+            <p className="text-base text-[#1C1C1C]">Description</p>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+          </div>
+          <div className="flex px-3 flex-col w-full">
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-4/12 mt-5"></div>
+          </div>
+        </div>
+        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+          <div className="relative w-full flex items-center justify-center">
+            <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
+            <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
+              <FaPlay className="text-white text-lg shadow-xl group-hover:text-primary" />
+            </div>
+          </div>
+
+          <p className="text-center my-3 text-base">Title 1</p>
+          <div className="flex w-full items-baseline gap-[3px] px-3 my-4">
+            <p className="text-base text-[#1C1C1C]">Description</p>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+          </div>
+          <div className="flex px-3 flex-col w-full">
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-full "></div>
+            <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-4/12 mt-5"></div>
+          </div>
+        </div>
       </div>
     </div>
   );

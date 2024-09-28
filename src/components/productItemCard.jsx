@@ -35,7 +35,7 @@ const ProductItemCard = (props) => {
           alt=""
           className="mx-3 absolute left-0 bottom-0 w-[50px] h-[20px]"
         />
-        <PiShareNetworkLight className="text-3xl absolute bottom-0 right-[1rem]" />
+        <PiShareNetworkLight className="text-3xl absolute bottom-0 right-[1rem] cursor-pointer hover:text-primary" />
       </div>
       <div className="flex w-full items-baseline gap-[3px] px-3 my-4">
         <p className="text-base ">Description</p>
