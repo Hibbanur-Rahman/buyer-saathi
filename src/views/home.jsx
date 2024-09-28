@@ -12,7 +12,13 @@ import productItemImg4 from "../assets/images/product-img-4.png";
 import productItemImg5 from "../assets/images/product-img-5.png";
 import productItemImg6 from "../assets/images/product-img-6.png";
 import productItemImg7 from "../assets/images/product-img-7.png";
+
+import itemListingImg1 from "../assets/images/home-item-listing-1.jpg";
+import itemImg1 from "../assets/images/item-img-1.png";
+import amazonLogo from "../assets/images/amazon-logo.svg";
+
 import ProductItem from "../components/productItem";
+import ProductItemCard from "../components/productItemCard";
 
 const Home = () => {
   return (
@@ -106,6 +112,141 @@ const Home = () => {
           <ProductItem images={productItemImg7} productName="Mobile" />
           <ProductItem images={productItemImg1} productName="Air Conditioner" />
         </div>
+      </div>
+
+      {/**========  listing=========== */}
+      <div
+        className="w-full flex gap-[20px] overflow-x-scroll border-y-[1px] py-8"
+        style={{ scrollbarWidth: "none" }}
+      >
+        <div
+          className="h-full w-[300px] flex-shrink-0 bg-cover p-3"
+          style={{ backgroundImage: `url(${itemListingImg1})` }}
+        >
+          <p className="text-xl font-semibold">
+            Trending items on the internet
+          </p>
+          <button className="bg-white text-sm font-medium px-6 py-2 rounded-md mt-8">
+            View All
+          </button>
+        </div>
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+      </div>
+      {/**========  listing=========== */}
+      <div
+        className="w-full flex gap-[20px] overflow-x-scroll border-y-[1px] py-8"
+        style={{ scrollbarWidth: "none" }}
+      >
+        <div
+          className="h-full w-[300px] flex-shrink-0 bg-cover p-3"
+          style={{ backgroundImage: `url(${itemListingImg1})` }}
+        >
+          <p className="text-xl font-semibold">
+            Trending items on the internet
+          </p>
+          <button className="bg-white text-sm font-medium px-6 py-2 rounded-md mt-8">
+            View All
+          </button>
+        </div>
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
+        <ProductItemCard
+          image={itemImg1}
+          name="Apple iphone 13 (Blue, 6GB | 128 GB)"
+          rating="4.3"
+          price="14499"
+          discountedPrice="10499"
+          discountPercentage="16"
+          companyLogo={amazonLogo}
+          cashbackPercent="12"
+        />
       </div>
     </div>
   );
