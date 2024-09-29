@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { LuMenu } from "react-icons/lu";
 import { FiSearch } from "react-icons/fi";
-import {
-  Drawer,
-  Button,
-  Typography,
-  IconButton,
-} from "@material-tailwind/react";
+import { Drawer, IconButton } from "@material-tailwind/react";
+import { GoHomeFill } from "react-icons/go";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
@@ -33,7 +31,7 @@ const Navbar = () => {
   return (
     <div
       className={`w-full flex md:px-0 px-3 shadow-md py-4 justify-center items-center transition-all duration-300 ${
-        isSticky ? "fixed top-0 left-0 bg-white z-50" : ""
+        isSticky ? "fixed top-0 left-0 bg-white z-50" : "z-50"
       }`}
     >
       <div className="md:w-10/12 w-full flex items-center justify-between">
@@ -65,10 +63,18 @@ const Navbar = () => {
       </div>
       <Drawer open={open} onClose={closeDrawer} className="p-4">
         <div className="mb-6 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray">
-            Material Tailwind
-          </Typography>
-          <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+          <h1
+            className="text-2xl md:text-3xl font-extrabold text-primary "
+            style={{ textShadow: "0px 5.25px 5.25px rgba(0,0,0,0.25)" }}
+          >
+            Buyer Sathi
+          </h1>
+          <IconButton
+            variant="text"
+            color=""
+            className="text-primary"
+            onClick={closeDrawer}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -85,15 +91,63 @@ const Navbar = () => {
             </svg>
           </IconButton>
         </div>
-        <Typography color="gray" className="mb-8 pr-4 font-normal">
-          Material Tailwind features multiple React and HTML components, all
-          written with Tailwind CSS classes and Material Design guidelines.
-        </Typography>
-        <div className="flex gap-2">
-          <Button size="sm" variant="outlined">
-            Documentation
-          </Button>
-          <Button size="sm">Get Started</Button>
+        <div className="w-full flex flex-col px-1">
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Home</p>
+          </div>
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Trending</p>
+          </div>
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Recommended Deals</p>
+          </div>
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/product-category")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Products Types</p>
+          </div>
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/product-category")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Service Types</p>
+          </div>
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Menu Item 6</p>
+          </div>
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Menu Item 7</p>
+          </div>
+          <div
+            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <GoHomeFill className="text-3xl text-primary " />
+            <p className="">Menu Item x</p>
+          </div>
         </div>
       </Drawer>
     </div>
