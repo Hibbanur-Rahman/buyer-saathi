@@ -1,0 +1,9 @@
+.bg-image {
+  background-image: url('../images/home-item-listing-1.jpg');
+}
+
+  @media (max-width: 990px) {
+    .bg-image {
+      background-image: url('../images/home-item-listing-mobile.png');
+    }
+  }

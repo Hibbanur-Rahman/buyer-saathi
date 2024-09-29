@@ -32,18 +32,18 @@ const Navbar = () => {
 
   return (
     <div
-      className={`w-full flex shadow-md py-4 justify-center items-center transition-all duration-300 ${
+      className={`w-full flex md:px-0 px-3 shadow-md py-4 justify-center items-center transition-all duration-300 ${
         isSticky ? "fixed top-0 left-0 bg-white z-50" : ""
       }`}
     >
-      <div className="w-10/12 flex items-center justify-between">
+      <div className="md:w-10/12 w-full flex items-center justify-between">
         <div className="flex items-center gap-[10px]">
           <LuMenu
             className="text-primary text-3xl cursor-pointer"
             onClick={openDrawer}
           />
           <h1
-            className="text-3xl font-extrabold text-primary "
+            className="text-2xl md:text-3xl font-extrabold text-primary "
             style={{ textShadow: "0px 5.25px 5.25px rgba(0,0,0,0.25)" }}
           >
             Buyer Sathi
@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="flex items-center h-full gap-[10px]">
           <input
             type="text"
-            className="bg-[#DDE3FF] rounded-xl py-2 px-4 placeholder:font-extralight placeholder:text-[#000] focus:outline-none"
+            className="md:flex hidden bg-[#DDE3FF] rounded-xl py-2 px-4 placeholder:font-extralight placeholder:text-[#000] focus:outline-none"
             placeholder="Search Categories"
           />
           <button className="bg-primary h-max w-min p-2 rounded-xl">

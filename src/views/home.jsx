@@ -14,6 +14,7 @@ import productItemImg6 from "../assets/images/product-img-6.png";
 import productItemImg7 from "../assets/images/product-img-7.png";
 
 import itemListingImg1 from "../assets/images/home-item-listing-1.jpg";
+import itemListingImgMobile from "../assets/images/home-item-listing-mobile.png";
 import itemImg1 from "../assets/images/item-img-1.png";
 import amazonLogo from "../assets/images/amazon-logo.svg";
 import mobileAppGroupImg from "../assets/images/mobile-app-group.png";
@@ -27,12 +28,15 @@ import ProductItemCard from "../components/productItemCard";
 
 const Home = () => {
   return (
-    <div className="flex flex-col  w-10/12 py-4">
+    <div
+      className="flex flex-col  md:w-10/12 w-full py-4"
+      style={{ scrollbarWidth: "none" }}
+    >
       {/**========= Hero Section ============ */}
-      <div className="w-full flex justify-between gap-[10px]">
-        <div className="w-8/12">
+      <div className="w-full flex md:flex-row flex-col justify-between gap-[10px]">
+        <div className="w-full md:w-8/12">
           <div
-            className="w-full flex justify-between items-center p-5 px-8 rounded-xl overflow-hidden  h-[300px] bg-no-repeat bg-cover"
+            className="w-full flex justify-between items-center p-5 px-8 rounded-xl overflow-hidden  md:h-[300px] bg-no-repeat bg-cover"
             style={{
               background: `url(${heroBgImg})`,
               backgroundRepeat: "no-repeat",
@@ -40,8 +44,10 @@ const Home = () => {
             }}
           >
             <div className="">
-              <p className="text-2xl font-semibold">Discover Your Ultimate</p>
-              <h1 className="text-[4rem] leading-[4rem] font-bold">
+              <p className="md:text-2xl text-lg font-semibold">
+                Discover Your Ultimate
+              </p>
+              <h1 className="text-2xl md:text-[4rem] md:leading-[4rem] font-bold">
                 Digital Companion
               </h1>
               <button className="mt-8 bg-primary flex items-center text-white px-6 py-2 rounded-lg">
@@ -49,14 +55,18 @@ const Home = () => {
               </button>
             </div>
             <div className="flex items-center justify-center w-5/12">
-              <img src={heroImg1} alt="" className="h-full" />
+              <img
+                src={heroImg1}
+                alt=""
+                className="md:h-full md:w-auto h-[130px] w-[200px]"
+              />
             </div>
           </div>
         </div>
-        <div className="w-4/12">
+        <div className="w-full md:w-4/12">
           <div className="w-full p-6 py-6 rounded-xl bg-[#E6E6E6] h-full flex flex-col justify-between">
             <div className="">
-              <p className="text-[#222222] text-3xl font-medium">
+              <p className="text-[#222222] md:text-3xl text-xl md:font-medium font-semibold">
                 Payment solutions with flexibility
               </p>
               <p className="font-light text-lg">
@@ -64,16 +74,28 @@ const Home = () => {
                 purchase the devices through convenient monthly installments.{" "}
               </p>
             </div>
-            <div className="flex gap-[10px] justify-between">
-              <img src={heroPaymentImg1} alt="" className="h-[35px]" />
-              <img src={heroPaymentImg2} alt="" className="h-[35px]" />
-              <img src={heroPaymentImg3} alt="" className="h-[35px]" />
+            <div className="flex gap-[10px] justify-between md:mt-0 mt-4">
+              <img
+                src={heroPaymentImg1}
+                alt=""
+                className="md:h-[35px] h-[20px]"
+              />
+              <img
+                src={heroPaymentImg2}
+                alt=""
+                className="md:h-[35px] h-[20px]"
+              />
+              <img
+                src={heroPaymentImg3}
+                alt=""
+                className="md:h-[35px] h-[20px]"
+              />
             </div>
           </div>
         </div>
       </div>
       {/**======== products listing =========== */}
-      <div className="w-full flex flex-col my-8">
+      <div className="w-full flex flex-col my-8 md:px-0 px-4">
         <div className="w-full flex justify-between">
           <p className="text-xl font-medium text-primary">Products</p>
           <div className="flex gap-[5px] items-center cursor-pointer">
@@ -84,7 +106,7 @@ const Home = () => {
         <div className="flex w-full border-b-[1px] mt-4">
           <div className="h-[3px] w-3/12 bg-primary rounded-md"></div>
         </div>
-        <div className="flex gap-[30px] my-4 justify-between">
+        <div className="flex md:flex-nowrap flex-wrap md:gap-[30px] gap-[10px] my-4 justify-between">
           <ProductItem images={productItemImg1} productName="Air Conditioner" />
           <ProductItem images={productItemImg2} productName="Printer" />
           <ProductItem images={productItemImg3} productName="Laptop" />
@@ -96,7 +118,7 @@ const Home = () => {
         </div>
       </div>
       {/**======== services listing=========== */}
-      <div className="w-full flex flex-col my-8">
+      <div className="w-full flex flex-col my-8 md:px-0 px-4">
         <div className="w-full flex justify-between">
           <p className="text-xl font-medium text-primary">Services</p>
           <div className="flex gap-[5px] items-center cursor-pointer">
@@ -107,7 +129,7 @@ const Home = () => {
         <div className="flex w-full border-b-[1px] mt-4">
           <div className="h-[3px] w-3/12 bg-primary rounded-md"></div>
         </div>
-        <div className="flex gap-[30px] my-4 justify-between">
+        <div className="flex md:flex-nowrap flex-wrap md:gap-[30px] gap-[10px] my-4 justify-between">
           <ProductItem images={productItemImg1} productName="Air Conditioner" />
           <ProductItem images={productItemImg2} productName="Printer" />
           <ProductItem images={productItemImg3} productName="Laptop" />
@@ -121,14 +143,11 @@ const Home = () => {
 
       {/**========  listing =========== */}
       <div
-        className="w-full flex gap-[20px] overflow-x-scroll border-y-[1px] py-8"
+        className="w-full flex md:flex-nowrap flex-wrap md:gap-[20px]  overflow-x-scroll border-y-[1px] py-8"
         style={{ scrollbarWidth: "none" }}
       >
-        <div
-          className="h-full w-[300px] flex-shrink-0 bg-cover p-3"
-          style={{ backgroundImage: `url(${itemListingImg1})` }}
-        >
-          <p className="text-xl font-semibold">
+        <div className="md:h-full h-[200px] md:w-[300px] w-full flex-shrink-0 bg-cover p-3 md:px-3 px-8 md:pt-3 pt-6 bg-image ">
+          <p className="md:text-xl text-2xl font-semibold">
             Trending items on the internet
           </p>
           <button className="bg-white text-sm font-medium px-6 py-2 rounded-md mt-8">
@@ -186,16 +205,13 @@ const Home = () => {
           cashbackPercent="12"
         />
       </div>
-      {/**========  listing =========== */}
-      <div
-        className="w-full flex gap-[20px] overflow-x-scroll border-y-[1px] py-8"
+       {/**========  listing =========== */}
+       <div
+        className="w-full flex md:flex-nowrap flex-wrap md:gap-[20px]  overflow-x-scroll border-y-[1px] py-8"
         style={{ scrollbarWidth: "none" }}
       >
-        <div
-          className="h-full w-[300px] flex-shrink-0 bg-cover p-3"
-          style={{ backgroundImage: `url(${itemListingImg1})` }}
-        >
-          <p className="text-xl font-semibold">
+        <div className="md:h-full h-[200px] md:w-[300px] w-full flex-shrink-0 bg-cover p-3 md:px-3 px-8 md:pt-3 pt-6 bg-image ">
+          <p className="md:text-xl text-2xl font-semibold">
             Trending items on the internet
           </p>
           <button className="bg-white text-sm font-medium px-6 py-2 rounded-md mt-8">
@@ -258,8 +274,8 @@ const Home = () => {
       <p className="text-center text-2xl font-medium my-4">
         Download <span className="text-primary">BuyerSathi</span> App
       </p>
-      <div className="w-full flex pt-4  justify-center bg-[#E8E8E8] rounded-xl">
-        <div className="w-8/12 flex justify-between">
+      <div className="w-full flex pt-4   justify-center bg-[#E8E8E8] rounded-xl">
+        <div className="md:w-8/12  w-full md:px-0 px-3 gap-[15px] flex justify-between">
           <div className="flex justify-center items-end">
             <img
               src={mobileAppGroupImg}
@@ -273,7 +289,7 @@ const Home = () => {
               exciting offers from Flipkart, Amazon, Paytm and lots more.
             </p>
             <p className="text-base mt-8 ">Download App From</p>
-            <div className="flex gap-[20px] mt-4 mb-8">
+            <div className="flex gap-[20px] mt-4 md:mb-8">
               <button className="bg-[#000000] rounded-lg px-2 py-1">
                 <img src={appStoreLogo} alt="" className="w-[120px] h-[50px]" />
               </button>
@@ -293,8 +309,8 @@ const Home = () => {
       <p className="font-medium text-center my-8 text-2xl">
         A complete Guide to use <span className="text-primary">BuyerSathi</span>
       </p>
-      <div className="w-full flex justify-between gap-[30px] ">
-        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+      <div className="w-full flex md:flex-row flex-col md:px-0 px-3  justify-between gap-[30px] ">
+        <div className="md:w-3/12 w-full shadow-lg rounded-lg overflow-hidden border pb-8">
           <div className="relative w-full flex items-center justify-center">
             <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
             <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
@@ -312,7 +328,7 @@ const Home = () => {
             <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-4/12 mt-5"></div>
           </div>
         </div>
-        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+        <div className="md:w-3/12 w-full shadow-lg rounded-lg overflow-hidden border pb-8">
           <div className="relative w-full flex items-center justify-center">
             <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
             <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
@@ -330,7 +346,7 @@ const Home = () => {
             <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-4/12 mt-5"></div>
           </div>
         </div>
-        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+        <div className="md:w-3/12 w-full shadow-lg rounded-lg overflow-hidden border pb-8">
           <div className="relative w-full flex items-center justify-center">
             <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
             <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
@@ -348,7 +364,7 @@ const Home = () => {
             <div className="border-b-2 border-[#1C1C1C] h-min border-dotted w-4/12 mt-5"></div>
           </div>
         </div>
-        <div className="w-3/12 shadow-lg rounded-lg overflow-hidden border pb-8">
+        <div className="md:w-3/12 w-full shadow-lg rounded-lg overflow-hidden border pb-8">
           <div className="relative w-full flex items-center justify-center">
             <img src={websiteTourImg} alt="" className="w-full h-[150px]" />
             <div className="group absolute w-[50px] h-[50px] rounded-full flex items-center justify-center border-[7px] border-white shadow-2xl cursor-pointer hover:border-primary transition-all duration-150">
