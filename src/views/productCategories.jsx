@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ProductItem from "../components/ProductItem";
+import ProductItem from "../components/productItem";
 import { BsBoxes } from "react-icons/bs";
 import { FaGears } from "react-icons/fa6";
 import productCategorySidebarImg from "../assets/images/product-category-sidebar-img.png";
