@@ -106,7 +106,7 @@ const Home = () => {
         <div className="flex w-full border-b-[1px] mt-4">
           <div className="h-[3px] w-3/12 bg-primary rounded-md"></div>
         </div>
-        <div className="flex md:flex-nowrap flex-wrap md:gap-[30px] gap-[10px] my-4 justify-between">
+        <div className="flex md:flex-nowrap flex-wrap md:gap-[10px] gap-[10px] my-4 justify-between">
           <ProductItem images={productItemImg1} productName="Air Conditioner" />
           <ProductItem images={productItemImg2} productName="Printer" />
           <ProductItem images={productItemImg3} productName="Laptop" />
@@ -143,10 +143,10 @@ const Home = () => {
 
       {/**========  listing =========== */}
       <div
-        className="w-full flex md:flex-nowrap flex-wrap md:gap-[20px]  overflow-x-scroll border-y-[1px] py-8"
+        className="w-full flex md:flex-nowrap flex-wrap md:gap-[0px]  overflow-x-scroll border-y-[1px] py-8"
         style={{ scrollbarWidth: "none" }}
       >
-        <div className="md:h-full h-[200px] md:w-[300px] w-full flex-shrink-0 bg-cover p-3 md:px-3 px-8 md:pt-3 pt-6 bg-image ">
+        <div className="md:h-full h-[200px] md:w-[300px] w-full flex-shrink-0 bg-cover p-3 md:px-3 px-8 md:pt-3 pt-6 bg-image md:me-2 me-0">
           <p className="md:text-xl text-2xl font-semibold">
             Trending items on the internet
           </p>
@@ -207,10 +207,10 @@ const Home = () => {
       </div>
        {/**========  listing =========== */}
        <div
-        className="w-full flex md:flex-nowrap flex-wrap md:gap-[20px]  overflow-x-scroll border-y-[1px] py-8"
+        className="w-full flex md:flex-nowrap flex-wrap md:gap-[0px]  overflow-x-scroll border-y-[1px] py-8"
         style={{ scrollbarWidth: "none" }}
       >
-        <div className="md:h-full h-[200px] md:w-[300px] w-full flex-shrink-0 bg-cover p-3 md:px-3 px-8 md:pt-3 pt-6 bg-image ">
+        <div className="md:h-full h-[200px] md:w-[300px] w-full flex-shrink-0 bg-cover p-3 md:px-3 px-8 md:pt-3 pt-6 bg-image md:me-2 me-0">
           <p className="md:text-xl text-2xl font-semibold">
             Trending items on the internet
           </p>

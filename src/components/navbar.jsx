@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { LuMenu } from "react-icons/lu";
 import { FiSearch } from "react-icons/fi";
@@ -7,6 +8,7 @@ import { GoHomeFill } from "react-icons/go";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
@@ -93,36 +95,36 @@ const Navbar = () => {
         </div>
         <div className="w-full flex flex-col px-1">
           <div
-            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            className={`group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg ${location.pathname==='/'?'bg-blue-gray-50':''} hover:bg-blue-gray-50 cursor-pointer`}
             onClick={() => navigate("/")}
           >
             <GoHomeFill className="text-3xl text-primary " />
             <p className="">Home</p>
           </div>
           <div
-            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg bg-blue-gray-50 cursor-pointer"
-            onClick={() => navigate("/")}
+            className={`group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg ${location.pathname==='/trending'?'bg-blue-gray-50':''} hover:bg-blue-gray-50 cursor-pointer`}
+            onClick={() => navigate("/trending")}
           >
             <GoHomeFill className="text-3xl text-primary " />
             <p className="">Trending</p>
           </div>
           <div
-            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
-            onClick={() => navigate("/")}
+            className={`group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg ${location.pathname==='/recommended'?'bg-blue-gray-50':''} hover:bg-blue-gray-50 cursor-pointer`}
+            onClick={() => navigate("/recommended")}
           >
             <GoHomeFill className="text-3xl text-primary " />
             <p className="">Recommended Deals</p>
           </div>
           <div
-            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
+            className={`group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg ${location.pathname==='/product-category'?'bg-blue-gray-50':''} hover:bg-blue-gray-50 cursor-pointer`}
             onClick={() => navigate("/product-category")}
           >
             <GoHomeFill className="text-3xl text-primary " />
             <p className="">Products Types</p>
           </div>
           <div
-            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
-            onClick={() => navigate("/product-category")}
+            className={`group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg ${location.pathname==='/product-services'?'bg-blue-gray-50':''} hover:bg-blue-gray-50 cursor-pointer`}
+            onClick={() => navigate("/product-services")}
           >
             <GoHomeFill className="text-3xl text-primary " />
             <p className="">Service Types</p>

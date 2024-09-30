@@ -16,13 +16,13 @@ import productItemImg7 from "../assets/images/product-img-7.png";
 
 // Sidebar Item Component
 const SidebarItem = ({ title }) => (
-  <div className="w-full flex items-center py-2 px-4 gap-[10px] hover:bg-[#F07B3F] cursor-pointer">
+  <div className="w-full flex md:flex-row flex-col md:border-none border-b-2 border-[#CDCDCD] items-center py-2 px-4 gap-[10px] hover:bg-[#F07B3F] cursor-pointer">
     <img
       src={productCategorySidebarImg}
       alt={title}
-      className="w-[40px] h-[40px]"
+      className="md:w-[40px] w-[30px] md:h-[40px] h-[30px]"
     />
-    <p className="text-base">{title}</p>
+    <p className="md:text-base text-xs">{title}</p>
   </div>
 );
 
@@ -38,7 +38,7 @@ const CategorySection = ({ sectionTitle, highlight, products }) => (
       <div className="h-[3px] w-3/12 bg-primary rounded-md"></div>
     </div>
     <div
-      className="flex md:flex-nowrap flex-wrap md:gap-[30px] gap-[10px] my-4 justify-between overflow-x-scroll"
+      className="flex md:flex-nowrap flex-wrap md:gap-[30px] gap-[0px] my-4 justify-between overflow-x-scroll"
       style={{ scrollbarWidth: "none" }}
     >
       {products.map((product, index) => (
@@ -86,21 +86,21 @@ const ProductCategory = () => {
   ];
 
   return (
-    <div className="w-10/12 flex flex-col items-center">
+    <div className="md:w-10/12 w-full flex flex-col items-center">
       <div className="w-min mt-5 flex items-center justify-center rounded-lg bg-[#D9D9D9]">
         <div
           className={`${
             isProductCategoryShow ? "bg-primary rounded-lg" : ""
-          }  px-16 py-2 cursor-pointer gap-[10px] flex items-center justify-center`}
+          }  md:px-16 px-4 py-2 cursor-pointer gap-[10px] flex items-center justify-center`}
           onClick={() => setIsProductCategoryShow(true)}
         >
           <BsBoxes
             className={` ${
               isProductCategoryShow ? "text-white" : "text-black"
-            }  text-3xl `}
+            }  md:text-3xl text-lg `}
           />
           <p
-            className={` ${
+            className={`md:text-base text-sm ${
               isProductCategoryShow ? "text-white" : "text-black"
             }  `}
           >
@@ -110,16 +110,16 @@ const ProductCategory = () => {
         <div
           className={`${
             isProductCategoryShow ? "" : "bg-primary rounded-lg"
-          } px-16 py-2 cursor-pointer gap-[10px] flex items-center justify-center`}
+          } md:px-16 px-4 py-2 cursor-pointer gap-[10px] flex items-center justify-center`}
           onClick={() => setIsProductCategoryShow(false)}
         >
           <FaGears
             className={` ${
               isProductCategoryShow ? "text-black" : "text-white"
-            }  text-3xl `}
+            }  md:text-3xl text-lg `}
           />
           <p
-            className={` ${
+            className={`md:text-base text-sm ${
               isProductCategoryShow ? "text-black" : "text-white"
             }  `}
           >
@@ -128,11 +128,11 @@ const ProductCategory = () => {
         </div>
       </div>
 
-      <div className="w-full flex gap-[2rem] mt-5">
+      <div className="w-full flex md:gap-[2rem] mt-5">
         {isProductCategoryShow ? (
           <>
             {/** Sidebar for categories */}
-            <div className="w-3/12 flex h-max flex-col rounded-xl bg-[#F1F1F1] border py-3">
+            <div className="w-3/12 flex h-max flex-col rounded-xl md:bg-[#F1F1F1] bg-[#EBEDFA] border py-3">
               {categories.map((category, index) => (
                 <SidebarItem key={index} title={category} />
               ))}

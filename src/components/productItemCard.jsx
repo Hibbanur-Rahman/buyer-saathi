@@ -7,7 +7,7 @@ import { PiInfo } from "react-icons/pi";
 const ProductItemCard = (props) => {
   const [wishlist, setWishlist] = useState(false);
   return (
-    <div className="md:w-3/12 w-6/12 flex md:p-0 md:py-0 py-3 md:px-0 px-2 flex-shrink-0">
+    <div className="md:w-3/12 w-6/12 flex md:p-0 md:py-0 py-3 md:px-3 px-2 flex-shrink-0">
       <div className=" relative w-full bg-[#F5F5F5] rounded-2xl overflow-hidden border-[1px] shadow-lg p-0 border-primary">
         <div className="flex md:flex-row flex-col-reverse  w-full md:justify-between">
           <h1 className="p-3 font-semibold text-[#222222] md:text-base text-sm md:mt-0 mt-6">
