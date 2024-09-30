@@ -6,6 +6,7 @@ import Footer from "./components/footer";
 import "./assets/styles/main.scss";
 import ProductCategory from "./views/productCategories";
 import Trending from "./views/trending";
+import ProductPickedByExperts from "./views/productPickedByExperts";
 function App() {
   return (
     <div
@@ -20,6 +21,7 @@ function App() {
           <Route path="/product-services" element={<ProductCategory />} />
           <Route path="/trending" element={<Trending />} />
           <Route path="/recommended" element={<Trending />} />
+          <Route path="/product-picked-experts" element={<ProductPickedByExperts />} />
         </Routes>
       </div>
       <Footer />
