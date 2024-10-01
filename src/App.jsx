@@ -7,6 +7,7 @@ import "./assets/styles/main.scss";
 import ProductCategory from "./views/productCategories";
 import Trending from "./views/trending";
 import ProductPickedByExperts from "./views/productPickedByExperts";
+import DashboardLayout from "./views/dashboard/dashboardLayout";
 function App() {
   return (
     <div
@@ -22,6 +23,7 @@ function App() {
           <Route path="/trending" element={<Trending />} />
           <Route path="/recommended" element={<Trending />} />
           <Route path="/product-picked-experts" element={<ProductPickedByExperts />} />
+          <Route path="/dashboard/*" element={<DashboardLayout/>}/>
         </Routes>
       </div>
       <Footer />

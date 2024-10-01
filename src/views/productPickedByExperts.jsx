@@ -32,7 +32,7 @@ const ProductPickedByExperts = () => {
                 1
               </p>
             </div>
-            <div className=" relative w-10/12 flex flex-col rounded-2xl border-[1px] border-primary p-3 overflow-hidden bg-[#F5F5F5]">
+            <div className=" relative w-10/12 flex flex-col rounded-2xl border-[1px] border-primary px-8 py-3 overflow-hidden bg-[#F5F5F5]">
               <div className="bg-[#34A853]  flex md:w-min w-min absolute right-[0px] top-0  items-center justify-center rounded-bl-2xl rounded-tr-2xl px-4 h-min py-2 gap-[3px]">
                 <p className="text-white text-xs">4.3</p>
                 <IoMdStar className="text-white text-sm" />
@@ -99,7 +99,7 @@ const ProductPickedByExperts = () => {
                 2
               </p>
             </div>
-            <div className=" relative w-10/12 flex flex-col rounded-2xl border-[1px] border-primary p-3 overflow-hidden bg-[#F5F5F5]">
+            <div className=" relative w-10/12 flex flex-col rounded-2xl border-[1px] border-primary px-8 py-3 overflow-hidden bg-[#F5F5F5]">
               <div className="bg-[#34A853]  flex md:w-min w-min absolute right-[0px] top-0  items-center justify-center rounded-bl-2xl rounded-tr-2xl px-4 h-min py-2 gap-[3px]">
                 <p className="text-white text-xs">4.3</p>
                 <IoMdStar className="text-white text-sm" />
@@ -166,7 +166,7 @@ const ProductPickedByExperts = () => {
                 3
               </p>
             </div>
-            <div className=" relative w-10/12 flex flex-col rounded-2xl border-[1px] border-primary p-3 overflow-hidden bg-[#F5F5F5]">
+            <div className=" relative w-10/12 flex flex-col rounded-2xl border-[1px] border-primary px-8 py-3 overflow-hidden bg-[#F5F5F5]">
               <div className="bg-[#34A853]  flex md:w-min w-min absolute right-[0px] top-0  items-center justify-center rounded-bl-2xl rounded-tr-2xl px-4 h-min py-2 gap-[3px]">
                 <p className="text-white text-xs">4.3</p>
                 <IoMdStar className="text-white text-sm" />

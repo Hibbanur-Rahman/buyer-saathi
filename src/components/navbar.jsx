@@ -43,8 +43,9 @@ const Navbar = () => {
             onClick={openDrawer}
           />
           <h1
-            className="text-2xl md:text-3xl font-extrabold text-primary "
+            className="text-2xl md:text-3xl font-extrabold text-primary cursor-pointer"
             style={{ textShadow: "0px 5.25px 5.25px rgba(0,0,0,0.25)" }}
+            onClick={()=>navigate('/')}
           >
             Buyer Sathi
           </h1>
@@ -66,8 +67,9 @@ const Navbar = () => {
       <Drawer open={open} onClose={closeDrawer} className="p-4">
         <div className="mb-6 flex items-center justify-between">
           <h1
-            className="text-2xl md:text-3xl font-extrabold text-primary "
+            className="text-2xl md:text-3xl font-extrabold text-primary cursor-pointer"
             style={{ textShadow: "0px 5.25px 5.25px rgba(0,0,0,0.25)" }}
+            onClick={()=>navigate('/')}
           >
             Buyer Sathi
           </h1>
@@ -137,11 +139,11 @@ const Navbar = () => {
             <p className="">Menu Item 6</p>
           </div>
           <div
-            className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
-            onClick={() => navigate("/")}
+            className={`group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg ${location.pathname==='/product-picked-experts'?'bg-blue-gray-50':''} hover:bg-blue-gray-50 cursor-pointer`}
+            onClick={() => navigate("/product-picked-experts")}
           >
             <GoHomeFill className="text-3xl text-primary " />
-            <p className="">Menu Item 7</p>
+            <p className="">Picked By experts</p>
           </div>
           <div
             className="group flex gap-[20px] items-center my-1 px-1 py-1 rounded-lg hover:bg-blue-gray-50 cursor-pointer"
