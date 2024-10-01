@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import starImg1 from "../assets/images/star-1.svg";
 import starImg2 from "../assets/images/star-2.svg";
 import starImg3 from "../assets/images/star-3.svg";
@@ -12,7 +12,9 @@ import { PiShareNetworkLight } from "react-icons/pi";
 
 const ProductPickedByExperts = () => {
   const [wishlist, setWishlist] = useState(false);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="w-10/12 flex flex-col my-4">
       <h1 className="text-3xl underline decoration-primary font-semibold">

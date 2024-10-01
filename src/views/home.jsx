@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GoChevronRight } from "react-icons/go";
 import heroBgImg from "../assets/images/hero-section-img-1.png";
 import heroImg1 from "../assets/images/hero-section-img-2.png";
@@ -27,6 +27,9 @@ import ProductItem from "../components/productItem";
 import ProductItemCard from "../components/productItemCard";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div
       className="flex flex-col  md:w-10/12 w-full py-4"
@@ -205,8 +208,8 @@ const Home = () => {
           cashbackPercent="12"
         />
       </div>
-       {/**========  listing =========== */}
-       <div
+      {/**========  listing =========== */}
+      <div
         className="w-full flex md:flex-nowrap flex-wrap md:gap-[0px]  overflow-x-scroll border-y-[1px] py-8"
         style={{ scrollbarWidth: "none" }}
       >

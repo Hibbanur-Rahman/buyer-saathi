@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsBoxes } from "react-icons/bs";
 import { FaGears } from "react-icons/fa6";
 import itemImg1 from "../assets/images/item-img-1.png";
@@ -7,6 +7,9 @@ import ProductItemCard from "../components/productItemCard";
 
 const Trending = () => {
   const [isTrendingItemsShow, setIsTrendingItemsShow] = useState(true);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="md:w-10/12 w-full flex flex-col items-center">
       <div className="w-max mt-5 flex items-center justify-center rounded-lg bg-[#D9D9D9]">

@@ -9,8 +9,12 @@ import Setting from "./setting";
 import OtherOptions from "./otherOptions";
 import Support from "./support";
 import InviteFriend from "./inviteFriend";
+import { useEffect } from "react";
 
 const DashboardLayout = () => {
+  useEffect(()=>{
+      window.scrollTo(0,0);
+  },[])
   return (
     <div className="w-10/12 flex  gap-[30px] my-8">
       <div className="w-3/12">

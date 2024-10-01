@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ProductItem from "../components/productItem";
 import { BsBoxes } from "react-icons/bs";
@@ -84,6 +84,10 @@ const ProductCategory = () => {
     { img: productItemImg6, name: "SmartWatch" },
     { img: productItemImg7, name: "Mobile" },
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="md:w-10/12 w-full flex flex-col items-center">
