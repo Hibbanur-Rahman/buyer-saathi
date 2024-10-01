@@ -12,13 +12,13 @@ import InviteFriend from "./inviteFriend";
 
 const DashboardLayout = () => {
   return (
-    <div className="w-10/12 flex  gap-[10px] my-8">
+    <div className="w-10/12 flex  gap-[30px] my-8">
       <div className="w-3/12">
         <DashboardSidebar />
       </div>
       <div className="w-9/12">
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Profile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/orders" element={<Orders />} />
