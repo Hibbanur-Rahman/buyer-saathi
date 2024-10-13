@@ -3,29 +3,34 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { LuMenu } from "react-icons/lu";
 import { FiSearch } from "react-icons/fi";
-import {
-  Drawer,
-  IconButton,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-  Input,
-} from "@material-tailwind/react";
+import { Drawer, IconButton, Dialog } from "@material-tailwind/react";
 import { GoHomeFill } from "react-icons/go";
-import googleLogo from "../assets/images/google-logo.svg";
-import appleLogo from "../assets/images/apple-logo.svg";
+import toast from "react-hot-toast";
+import Login from "../views/login";
+import { useDispatch, useSelector } from "react-redux";
+import { handleOpenLoginModal } from "../redux/slices/auth/authSlice";
+import { FaRegUser } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const isOpenLoginModal = useSelector((state) => state.auth.openLoginModal);
+  const user = useSelector((state) => state.auth.user);
   const [open, setOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-  const [openLoginModal, setOpenLoginModal] = useState(false);
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
 
-  const handleOpenLoginModal = () => setOpenLoginModal(!openLoginModal);
+  // Handle opening the login modal
+  const openLoginModal = () => {
+    dispatch(handleOpenLoginModal(true));
+  };
+
+  // Handle closing the login modal
+  const closeLoginModal = () => {
+    dispatch(handleOpenLoginModal(false));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,12 +76,16 @@ const Navbar = () => {
           <button className="bg-primary h-max w-min p-2 rounded-xl">
             <FiSearch className="text-white text-xl" />
           </button>
-          <button
-            className="rounded-xl border-2 px-4 py-1 border-primary hover:bg-primary hover:text-white"
-            onClick={handleOpenLoginModal}
-          >
-            Login
-          </button>
+          {user ? (
+            <FaRegUser />
+          ) : (
+            <button
+              className="rounded-xl border-2 px-4 py-1 border-primary hover:bg-primary hover:text-white"
+              onClick={openLoginModal}
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
       <Drawer open={open} onClose={closeDrawer} className="p-4">
@@ -90,7 +99,6 @@ const Navbar = () => {
           </h1>
           <IconButton
             variant="text"
-            color=""
             className="text-primary"
             onClick={closeDrawer}
           >
@@ -184,60 +192,11 @@ const Navbar = () => {
         </div>
       </Drawer>
       <Dialog
-        open={openLoginModal}
-        handler={handleOpenLoginModal}
+        open={isOpenLoginModal}
+        handler={closeLoginModal}
         className="bg-[rgba(87,115,246,0.8)] py-8 px-10 rounded-3xl"
       >
-        <p className="text-white text-2xl font-semibold poppins-semibold">
-          Login or Signup
-        </p>
-        <p className="text-white text-sm my-3 font-thin poppins-extralight">
-          We will send on SMS to verify
-        </p>
-        <div className="w-full flex p-3 py-8 items-center justify-center shadow-2xl rounded-3xl bg-white ">
-          <div className="w-9/12 flex flex-col justify-center items-center py-2">
-            <div className="w-full relative mb-6">
-              <label
-                htmlFor=""
-                className="text-black text-sm absolute left-[20px] top-[-10px] px-3 bg-white poppins-regular"
-              >
-                Enter phone or email
-              </label>
-              <input
-                type="text"
-                className="py-3 px-3 border-2 w-full rounded-2xl border-primary outline-none focus:outline-none poppins-regular"
-              />
-            </div>
-            <div className="w-full relative mb-3">
-              <label
-                htmlFor=""
-                className="text-black text-sm absolute left-[20px] top-[-10px] px-3 bg-white poppins-regular"
-              >
-                Password
-              </label>
-              <input
-                type="text"
-                className="py-3 px-3 border-2 w-full rounded-2xl border-primary outline-none focus:outline-none poppins-regular"
-              />
-            </div>
-            <p className="text-center poppins-regular text-black my-4">
-              Or continue with social Account
-            </p>
-            <div className="flex justify-center items-center  gap-[20px]">
-              <img src={googleLogo} alt="" className="h-[60px] w-[60px] " />
-              <img src={appleLogo} alt="" className="h-[55px] w-[55px]" />
-            </div>
-            <button
-              className="bg-[#F07B3F] text-white rounded-lg w-full py-2 mt-6"
-              onClick={() => {
-                navigate("/dashboard");
-                handleOpenLoginModal();
-              }}
-            >
-              continue
-            </button>
-          </div>
-        </div>
+        <Login />
       </Dialog>
     </div>
   );

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DashboardSidebar from "../../components/dashboardSidebar";
 import Dashboard from "./dashboard";
 import Profile from "./profile";
@@ -10,11 +11,19 @@ import OtherOptions from "./otherOptions";
 import Support from "./support";
 import InviteFriend from "./inviteFriend";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { handleOpenLoginModal } from "../../redux/slices/auth/authSlice";
 
 const DashboardLayout = () => {
-  useEffect(()=>{
-      window.scrollTo(0,0);
-  },[])
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (!localStorage.getItem("access_token")) {
+      dispatch(handleOpenLoginModal(true));
+      navigate("/");
+    }
+  }, []);
   return (
     <div className="w-10/12 flex  gap-[30px] my-8">
       <div className="w-3/12">

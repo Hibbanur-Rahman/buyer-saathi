@@ -8,6 +8,7 @@ import ProductCategory from "./views/productCategories";
 import Trending from "./views/trending";
 import ProductPickedByExperts from "./views/productPickedByExperts";
 import DashboardLayout from "./views/dashboard/dashboardLayout";
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <div
@@ -27,6 +28,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
+      <Toaster/>
     </div>
   );
 }
