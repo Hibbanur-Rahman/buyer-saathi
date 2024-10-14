@@ -87,7 +87,7 @@ const Login = () => {
   // handle get device name
   const getDeviceName = () => {
     const userAgent = navigator.userAgent.toLowerCase();
-
+    console.log("user agent:",userAgent);
     if (/android/.test(userAgent)) {
       return "Android Device";
     } else if (/iphone|ipad|ipod/.test(userAgent)) {
@@ -120,7 +120,7 @@ const Login = () => {
     }
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/request-otp/login`,
+        `${import.meta.env.VITE_API_URL}/api/auth/request-otp/login`,
         body
       );
       if (response.status === 200) {

@@ -9,11 +9,20 @@ import { RiEqualizer2Line } from "react-icons/ri";
 import { CiCircleQuestion } from "react-icons/ci";
 import { FiLogOut } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/slices/auth/authSlice";
 
 const DashboardSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch=useDispatch();
 
+  //handle logout
+  const handleLogout=()=>{
+    dispatch(logout());
+    navigate('/');
+    localStorage.removeItem('access_token');
+  }
   return (
     <div className="w-full flex flex-col shadow-lg">
       <div className="w-full flex items-center gap-[15px] px-4 py-3">
@@ -29,20 +38,20 @@ const DashboardSidebar = () => {
       </div>
       <div
         className={`border-t-[0px] border-x-0 border group w-full px-4 py-3 flex gap-[10px] items-center ${
-          location.pathname === "/dashboard/profile" ? "bg-[#F07B3F]" : ""
+          location.pathname === "/dashboard/profile" || location.pathname==='/dashboard' ? "bg-[#F07B3F]" : ""
         } hover:bg-[#F07B3F] cursor-pointer`}
         onClick={() => navigate("/dashboard/profile")}
       >
         <FiUser
           className={`group-hover:text-white ${
-            location.pathname === "/dashboard/profile"
+            location.pathname === "/dashboard/profile" || location.pathname==='/dashboard'
               ? "text-white"
               : "text-[#344054]"
           }  text-2xl`}
         />
         <p
           className={`group-hover:text-white  ${
-            location.pathname === "/dashboard/profile"
+            location.pathname === "/dashboard/profile" || location.pathname==='/dashboard'
               ? "text-white"
               : "text-[#344054]"
           }`}
@@ -211,7 +220,7 @@ const DashboardSidebar = () => {
           Support
         </p>
       </div>
-      <div className="border-t-[0px] border-x-0 border group w-full px-4 py-3 flex gap-[10px]  items-center  cursor-pointer">
+      <div className="border-t-[0px] border-x-0 border group w-full px-4 py-3 flex gap-[10px]  items-center  cursor-pointer" onClick={handleLogout}>
         <FiLogOut className="  text-red-800 text-2xl" />
         <p className=" text-red-800 ">Log Out</p>
       </div>

@@ -8,16 +8,21 @@ import { GoHomeFill } from "react-icons/go";
 import toast from "react-hot-toast";
 import Login from "../views/login";
 import { useDispatch, useSelector } from "react-redux";
-import { handleOpenLoginModal } from "../redux/slices/auth/authSlice";
-import { FaRegUser } from "react-icons/fa";
+import {
+  handleIsAuthenticate,
+  handleOpenLoginModal,
+} from "../redux/slices/auth/authSlice";
+import { FaUserAlt } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
   const isOpenLoginModal = useSelector((state) => state.auth.openLoginModal);
   const user = useSelector((state) => state.auth.user);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [open, setOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
@@ -33,6 +38,15 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      setIsUserLoggedIn(true);
+      dispatch(handleIsAuthenticate(true));
+
+    } else {
+      setIsUserLoggedIn(false);
+      dispatch(handleIsAuthenticate(false));
+
+    }
     const handleScroll = () => {
       if (window.scrollY > 110) {
         setIsSticky(true);
@@ -76,8 +90,13 @@ const Navbar = () => {
           <button className="bg-primary h-max w-min p-2 rounded-xl">
             <FiSearch className="text-white text-xl" />
           </button>
-          {user ? (
-            <FaRegUser />
+          {isAuthenticated ? (
+            <div
+              className="border-2 border-primary rounded-xl p-2 cursor-pointer"
+              onClick={() => navigate("/dashboard")}
+            >
+              <FaUserAlt className="text-primary text-xl" />
+            </div>
           ) : (
             <button
               className="rounded-xl border-2 px-4 py-1 border-primary hover:bg-primary hover:text-white"
