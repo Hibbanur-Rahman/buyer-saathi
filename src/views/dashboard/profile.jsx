@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { FaCloudUploadAlt } from "react-icons/fa";
+import dummyProfileImg from "../../assets/images/profile-img.png";
 
 const Profile = () => {
   const [userDetails, setUserDetails] = useState({});
@@ -9,17 +11,22 @@ const Profile = () => {
   const [mobileNumber, setMobileNumber] = useState("");
   const [gender, setGender] = useState("");
   const [dob, setDob] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
+  const [profileImagePreview, setProfileImagePreview] = useState();
+  const [imageLoading, setImageLoading] = useState(false);
 
   //handle update user details
   const UpdateUserDetails = async () => {
     try {
+      const formattedDob = formatDate(dob);
       const response = await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/auth/users`,
+        `${import.meta.env.VITE_API_URL}/api/auth/profiles`,
         {
           name: fullName,
           email: email,
           mobile: mobileNumber,
-          props: [{ gender: gender }, { dob: dob }],
+          gender: gender,
+          dob: formattedDob,
         },
         {
           headers: {
@@ -30,7 +37,6 @@ const Profile = () => {
 
       if (response.status === 200) {
         toast.success("User details updated successfully");
-        CreateProfile();
       }
     } catch (error) {
       console.log("Failed to update the user:", error);
@@ -86,8 +92,9 @@ const Profile = () => {
         setEmail(response.data.data.email || "");
         setMobileNumber(response.data.data.mobile || "");
         setFullName(response.data.data.name || "");
-        setGender(response.data.data.props[0].gender || "");
-        setDob(response.data.data.props[0].dob || "");
+        setGender(response.data.data.profile?.gender || "");
+        const formateDob = reverseDate(response.data.data?.profile?.dob || "");
+        setDob(formateDob || "");
       }
     } catch (error) {
       console.error(error);
@@ -96,19 +103,127 @@ const Profile = () => {
   };
 
   //handle discard
-  const handleDiscard=()=>{
+  const handleDiscard = () => {
     setFullName("");
     setEmail("");
     setMobileNumber("");
     setGender("");
     setDob("");
-  }
+  };
+
+  // Handle file input change
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfileImage(file);
+      setProfileImagePreview(URL.createObjectURL(file)); // Preview the selected image
+    }
+  };
+
+  // Handle upload profile image
+  const handleUploadImage = async () => {
+    if (!profileImage) {
+      toast.error("Please select an image first");
+      return;
+    }
+    setImageLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("profile_image", profileImage);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/profiles/image`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        toast.success("Profile image uploaded successfully");
+        setImageLoading(false);
+      }
+    } catch (error) {
+      setImageLoading(false);
+      console.log("Error in uploading profile image:", error);
+      toast.error(error.response?.data?.message || "Failed to upload image");
+    }
+  };
+
+  //formate date in dd-mm-yyyy
+  const formatDate = (date) => {
+    const d = new Date(date);
+    let day = d.getDate();
+    let month = d.getMonth() + 1; // Months are zero-based
+    const year = d.getFullYear();
+
+    // Add leading zero if day or month is less than 10
+    if (day < 10) {
+      day = "0" + day;
+    }
+    if (month < 10) {
+      month = "0" + month;
+    }
+
+    return `${day}-${month}-${year}`;
+  };
+
+  //handle reverse dob
+  const reverseDate = (date) => {
+    return date.split("-").reverse().join("-");
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     getUserDetails();
   }, []);
   return (
     <div className="w-full flex flex-col">
+      <div className="flex justify-center items-center mb-4 relative gap-[40px]">
+        <div
+          className="rounded-full border flex flex-col justify-center items-center p-2 shadow-lg w-[130px] h-[130px] cursor-pointer relative"
+          onClick={() => document.getElementById("profileImageInput").click()} // Trigger input click on div click
+        >
+          {profileImagePreview ? (
+            <img
+              src={profileImagePreview} // Show preview image
+              alt="Profile Preview"
+              className="h-full w-full object-cover rounded-full"
+            />
+          ) : (
+            <>
+              <FaCloudUploadAlt className="h-[80px] w-[80px] text-gray-500" />
+              <p className="text-xs text-center text-gray-600">
+                Click or <br /> Drag file
+              </p>
+            </>
+          )}
+        </div>
+        {/* Hidden input field */}
+        <input
+          type="file"
+          id="profileImageInput"
+          style={{ display: "none" }} // Completely hide the input field
+          accept="image/*"
+          onChange={handleFileChange} // Handle file change
+        />
+        {imageLoading ? (
+          <button
+            className="rounded-lg border px-6 py-2 bg-primary text-white cursor-not-allowed"
+            disabled
+          >
+            Uploading ....
+          </button>
+        ) : (
+          <button
+            className="rounded-lg border px-6 py-2 bg-primary text-white"
+            onClick={handleUploadImage}
+          >
+            Upload Image
+          </button>
+        )}
+      </div>
+
       <div className="w-full flex gap-[20px] my-2">
         <div className="w-6/12 flex flex-col">
           <label htmlFor="fullName" className="font-regular text-lg">
@@ -216,7 +331,10 @@ const Profile = () => {
         >
           Save Changes
         </button>
-        <button className="px-10 py-2 rounded-lg bg-[#777777] text-white text-base" onClick={()=>handleDiscard()}>
+        <button
+          className="px-10 py-2 rounded-lg bg-[#777777] text-white text-base"
+          onClick={() => handleDiscard()}
+        >
           Discard Changes
         </button>
       </div>
