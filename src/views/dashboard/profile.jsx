@@ -46,35 +46,6 @@ const Profile = () => {
     }
   };
 
-  //handle post or create profile
-  const CreateProfile = async () => {
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/profiles`,
-        {
-          name: fullName,
-          email: email,
-          mobile: mobileNumber,
-          gender: gender,
-          dob: dob,
-          props: [{ gender: gender }, { dob: dob }],
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        }
-      );
-      if (response.status === 201) {
-        toast.success("Profile created successfully");
-      }
-    } catch (error) {
-      console.log("Failed to create the profile:", error);
-      toast.error(
-        error.response?.data?.message?.email || error.response?.data?.message
-      );
-    }
-  };
 
   // handle get user details
   const getUserDetails = async () => {

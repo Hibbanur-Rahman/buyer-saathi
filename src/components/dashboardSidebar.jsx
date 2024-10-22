@@ -11,18 +11,36 @@ import { FiLogOut } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/slices/auth/authSlice";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const DashboardSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   //handle logout
-  const handleLogout=()=>{
-    dispatch(logout());
-    navigate('/');
-    localStorage.removeItem('access_token');
-  }
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/auth/logout`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        toast.success("Logout successfully")
+        dispatch(logout());
+        navigate("/");
+        localStorage.removeItem("access_token");
+      }
+    } catch (error) {
+      console.log("Failed to logout:", error);
+      toast.error(error.response?.data?.message || "Failed to logout");
+    }
+  };
   return (
     <div className="w-full flex flex-col shadow-lg">
       <div className="w-full flex items-center gap-[15px] px-4 py-3">
@@ -38,20 +56,25 @@ const DashboardSidebar = () => {
       </div>
       <div
         className={`border-t-[0px] border-x-0 border group w-full px-4 py-3 flex gap-[10px] items-center ${
-          location.pathname === "/dashboard/profile" || location.pathname==='/dashboard' ? "bg-[#F07B3F]" : ""
+          location.pathname === "/dashboard/profile" ||
+          location.pathname === "/dashboard"
+            ? "bg-[#F07B3F]"
+            : ""
         } hover:bg-[#F07B3F] cursor-pointer`}
         onClick={() => navigate("/dashboard/profile")}
       >
         <FiUser
           className={`group-hover:text-white ${
-            location.pathname === "/dashboard/profile" || location.pathname==='/dashboard'
+            location.pathname === "/dashboard/profile" ||
+            location.pathname === "/dashboard"
               ? "text-white"
               : "text-[#344054]"
           }  text-2xl`}
         />
         <p
           className={`group-hover:text-white  ${
-            location.pathname === "/dashboard/profile" || location.pathname==='/dashboard'
+            location.pathname === "/dashboard/profile" ||
+            location.pathname === "/dashboard"
               ? "text-white"
               : "text-[#344054]"
           }`}
@@ -220,7 +243,10 @@ const DashboardSidebar = () => {
           Support
         </p>
       </div>
-      <div className="border-t-[0px] border-x-0 border group w-full px-4 py-3 flex gap-[10px]  items-center  cursor-pointer" onClick={handleLogout}>
+      <div
+        className="border-t-[0px] border-x-0 border group w-full px-4 py-3 flex gap-[10px]  items-center  cursor-pointer"
+        onClick={handleLogout}
+      >
         <FiLogOut className="  text-red-800 text-2xl" />
         <p className=" text-red-800 ">Log Out</p>
       </div>

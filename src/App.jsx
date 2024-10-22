@@ -28,7 +28,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
-      <Toaster/>
+      <Toaster  containerStyle={{zIndex: 99999}}/>
     </div>
   );
 }

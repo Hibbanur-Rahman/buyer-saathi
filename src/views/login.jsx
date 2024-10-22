@@ -87,22 +87,23 @@ const Login = () => {
   // handle get device name
   const getDeviceName = () => {
     const userAgent = navigator.userAgent.toLowerCase();
+    return userAgent;
     console.log("user agent:",userAgent);
-    if (/android/.test(userAgent)) {
-      return "Android Device";
-    } else if (/iphone|ipad|ipod/.test(userAgent)) {
-      return "iOS Device";
-    } else if (/windows phone/.test(userAgent)) {
-      return "Windows Phone";
-    } else if (/mac/.test(userAgent)) {
-      return "Mac Device";
-    } else if (/windows/.test(userAgent)) {
-      return "Windows Device";
-    } else if (/linux/.test(userAgent)) {
-      return "Linux Device";
-    } else {
-      return "Unknown Device";
-    }
+    // if (/android/.test(userAgent)) {
+    //   return "Android Device";
+    // } else if (/iphone|ipad|ipod/.test(userAgent)) {
+    //   return "iOS Device";
+    // } else if (/windows phone/.test(userAgent)) {
+    //   return "Windows Phone";
+    // } else if (/mac/.test(userAgent)) {
+    //   return "Mac Device";
+    // } else if (/windows/.test(userAgent)) {
+    //   return "Windows Device";
+    // } else if (/linux/.test(userAgent)) {
+    //   return "Linux Device";
+    // } else {
+    //   return "Unknown Device";
+    // }
   };
 
   //handle resend otp

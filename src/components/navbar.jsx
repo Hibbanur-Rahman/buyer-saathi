@@ -64,7 +64,7 @@ const Navbar = () => {
   return (
     <div
       className={`w-full flex md:px-0 px-3 shadow-md py-4 justify-center items-center transition-all duration-300 ${
-        isSticky ? "fixed top-0 left-0 bg-white z-50" : "z-50"
+        isSticky ? "fixed top-0 left-0 bg-white z-10" : "z-10"
       }`}
     >
       <div className="md:w-10/12 w-full flex items-center justify-between">
