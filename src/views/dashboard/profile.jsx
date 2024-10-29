@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import dummyProfileImg from "../../assets/images/profile-img.png";
+import { useDispatch } from "react-redux";
+import { handleSaveUserDetails } from "../../redux/slices/auth/authSlice";
 
 const Profile = () => {
+  const dispatch=useDispatch();
   const [userDetails, setUserDetails] = useState({});
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
@@ -14,9 +17,12 @@ const Profile = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [profileImagePreview, setProfileImagePreview] = useState();
   const [imageLoading, setImageLoading] = useState(false);
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [loader,setLoader]=useState(false);
 
   //handle update user details
   const UpdateUserDetails = async () => {
+    setLoader(true);
     try {
       const formattedDob = formatDate(dob);
       const response = await axios.put(
@@ -36,16 +42,18 @@ const Profile = () => {
       );
 
       if (response.status === 200) {
+        setLoader(false);
+        getUserDetails();
         toast.success("User details updated successfully");
       }
     } catch (error) {
+      setLoader(false);
       console.log("Failed to update the user:", error);
       toast.error(
         error.response?.data?.message?.email || error.response?.data?.message
       );
     }
   };
-
 
   // handle get user details
   const getUserDetails = async () => {
@@ -59,6 +67,7 @@ const Profile = () => {
         }
       );
       if (response.status === 200) {
+        dispatch(handleSaveUserDetails(response.data.data));
         setUserDetails(response.data.data);
         setEmail(response.data.data.email || "");
         setMobileNumber(response.data.data.mobile || "");
@@ -66,6 +75,7 @@ const Profile = () => {
         setGender(response.data.data.profile?.gender || "");
         const formateDob = reverseDate(response.data.data?.profile?.dob || "");
         setDob(formateDob || "");
+        setProfileImageUrl(response?.data?.data?.profile?.profile_image || "");
       }
     } catch (error) {
       console.error(error);
@@ -111,6 +121,7 @@ const Profile = () => {
         }
       );
       if (response.status === 200) {
+        getUserDetails();
         toast.success("Profile image uploaded successfully");
         setImageLoading(false);
       }
@@ -158,6 +169,12 @@ const Profile = () => {
           {profileImagePreview ? (
             <img
               src={profileImagePreview} // Show preview image
+              alt="Profile Preview"
+              className="h-full w-full object-cover rounded-full"
+            />
+          ) : profileImageUrl ? (
+            <img
+              src={profileImageUrl} // Show preview image
               alt="Profile Preview"
               className="h-full w-full object-cover rounded-full"
             />
@@ -296,12 +313,20 @@ const Profile = () => {
         </div>
       </div>
       <div className="w-full flex justify-center gap-[30px] my-3">
-        <button
+        {
+          loader? <button
+          className="px-10 py-2 rounded-lg bg-primary text-white text-base"
+          disabled
+        >
+          Saving ....
+        </button>: <button
           className="px-10 py-2 rounded-lg bg-primary text-white text-base"
           onClick={() => UpdateUserDetails()}
         >
           Save Changes
         </button>
+        }
+       
         <button
           className="px-10 py-2 rounded-lg bg-[#777777] text-white text-base"
           onClick={() => handleDiscard()}

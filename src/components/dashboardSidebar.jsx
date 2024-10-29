@@ -9,7 +9,7 @@ import { RiEqualizer2Line } from "react-icons/ri";
 import { CiCircleQuestion } from "react-icons/ci";
 import { FiLogOut } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/slices/auth/authSlice";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -18,6 +18,7 @@ const DashboardSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const user=useSelector((state)=>state.auth.user);
 
   //handle logout
   const handleLogout = async () => {
@@ -41,18 +42,20 @@ const DashboardSidebar = () => {
       toast.error(error.response?.data?.message || "Failed to logout");
     }
   };
+
+
   return (
     <div className="w-full flex flex-col shadow-lg">
       <div className="w-full flex items-center gap-[15px] px-4 py-3">
         <div className="relative flex items-center justify-center">
           <img
-            src={profileImg}
+            src={user?.profile?.profile_image || profileImg}
             alt=""
             className="w-[60px] h-[60px] rounded-full shadow-md"
           />
           <div className="w-[15px] h-[15px] bg-[#12B76A] rounded-full absolute bottom-0 border-2 right-[5px]"></div>
         </div>
-        <p className="text-xl font-medium">Olivia Rhye</p>
+        <p className="text-xl font-medium">{user?.name || 'John doe'}</p>
       </div>
       <div
         className={`border-t-[0px] border-x-0 border group w-full px-4 py-3 flex gap-[10px] items-center ${

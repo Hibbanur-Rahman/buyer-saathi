@@ -23,9 +23,12 @@ const authSlice = createSlice({
     },
     handleIsAuthenticate:(state,action)=>{
       state.isAuthenticated=action.payload;
+    },
+    handleSaveUserDetails:(state,action)=>{
+      state.user=action.payload;
     }
   },
 });
 
-export const { login, handleOpenLoginModal,logout, handleIsAuthenticate } = authSlice.actions;
+export const { login, handleOpenLoginModal,logout, handleIsAuthenticate,handleSaveUserDetails } = authSlice.actions;
 export default authSlice.reducer;
